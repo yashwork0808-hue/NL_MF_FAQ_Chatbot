@@ -1,0 +1,169 @@
+# Problem Statement: Groww Mutual Fund FAQ Assistant
+
+## 1. Project Overview
+
+Build a small FAQ assistant for Groww that answers factual questions about mutual fund schemes using only official public pages.
+
+The assistant should answer questions about:
+- Expense ratio
+- Exit load
+- Minimum SIP
+- ELSS lock-in period
+- Riskometer
+- Benchmark
+- How to download mutual fund statements
+
+Every answer must include one source link.
+
+The assistant must not provide investment advice.
+
+## 2. Who This Helps
+
+- Retail users comparing mutual fund schemes.
+- Support and content teams answering repetitive mutual fund questions.
+
+## 3. Data Sources
+
+Scrape ONLY the following five Groww pages. Do not follow internal links or crawl other pages.
+
+1. AMC Overview — HDFC Mutual Fund
+   https://groww.in/mutual-funds/amc/hdfc-mutual-funds
+
+2. Large Cap — HDFC Large Cap Fund Direct Growth
+   https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth
+
+3. Flexi Cap — HDFC Flexi Cap Direct Plan Growth
+   https://groww.in/mutual-funds/hdfc-equity-fund-direct-growth
+
+4. ELSS — HDFC ELSS Tax Saver Fund Direct Plan Growth
+   https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth
+
+5. Mid Cap — HDFC Mid Cap Fund Direct Growth
+   https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth
+
+## 4. FAQ Assistant Requirements
+
+Build a working FAQ assistant that:
+
+- Answers factual queries only.
+- Shows one clear citation link in every answer.
+- Refuses opinionated or portfolio-related questions politely.
+- Provides a relevant educational link when refusing investment advice.
+
+Example questions:
+- What is the expense ratio?
+- What is the ELSS lock-in period?
+- What is the minimum SIP?
+- What is the exit load?
+- What is the riskometer or benchmark?
+- How do I download my capital-gains statement?
+
+### User Interface
+
+Create a tiny, simple interface containing:
+
+- A welcome message.
+- Three example questions.
+- A question input box.
+- An answer area with a source link.
+- The note: "Facts-only. No investment advice."
+
+## 5. Key Constraints
+
+### Public Sources Only
+- Use public sources only.
+- Do not use screenshots of the app backend.
+- Do not use third-party blogs as sources.
+
+### No Personal Information (PII)
+Do not accept or store:
+- PAN
+- Aadhaar
+- Account numbers
+- OTPs
+- Email addresses
+- Phone numbers
+
+### No Performance Claims
+- Do not calculate or compare investment returns.
+- Link to the official factsheet if performance information is requested.
+
+### Clarity and Transparency
+- Keep answers within three sentences.
+- Every answer must include a source link.
+- Add: "Last updated from sources: [date]".
+
+## 6. Project Deliverables
+
+1. Working prototype link (app/notebook), or a demo video of up to three minutes if hosting is not possible.
+2. Source list (CSV/MD) containing 15–25 URLs used.
+3. README with setup steps, project scope (AMC + schemes), and known limitations.
+4. Sample Q&A file containing 5–10 queries, assistant answers and links.
+5. Disclaimer snippet used in the UI (facts-only, no investment advice).
+
+## 7. Skills Being Tested
+
+- W1 — Thinking Like a Model: Identify the exact fact asked and decide whether to answer or refuse.
+- W2 — LLMs & Prompting: Instruction style, concise phrasing, polite safe refusals and citation wording.
+- W3 — RAGs: Small-corpus retrieval with accurate citations from AMC/SEBI/AMFI pages.
+
+This is a demonstration of RAG. Store the output of every stage explicitly so that each stage can be demonstrated.
+
+## 8. Implementation Phases
+
+Implement the project phase by phase.
+
+### Phase 1 — Data Loading
+Collect and load the specified source documents.
+
+### Phase 2 — Data Chunking
+Choose a chunking strategy based on the data. The AI coding agent can decide the appropriate strategy.
+
+### Phase 3 — Data Embedding
+Use the following embedding model:
+
+sentence-transformers/all-MiniLM-L6-v2
+
+### Phase 4 — Vector Database
+Use ChromaDB for this exercise.
+
+Make the following configurable so they can be changed later:
+- Embedding model
+- Vector database
+
+### Data Retrieval
+
+- Embedding model: Use the same model used during data ingestion.
+- Vector database: Use the same database used during data ingestion.
+
+### LLM Model
+
+Primary provider: Groq
+
+- API key: Store in the `.env` file.
+- Model: qwen/qwen3.8-27b, as specified in the trainer's brief.
+
+Other LLM providers mentioned:
+- Gemini
+- OpenAI
+- Anthropic
+- Mistral
+
+Keep the model/provider configuration flexible.
+
+## 9. Important Implementation Requirement
+
+This project must demonstrate the complete RAG pipeline.
+
+Store the output of every stage explicitly:
+
+1. Data loading
+2. Data cleaning
+3. Data chunking
+4. Data embedding
+5. Vector database storage
+6. Data retrieval
+7. LLM response generation
+8. User interface
+
+The implementation should be modular, understandable and demonstrable.
