@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -9,6 +10,18 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 import streamlit as st
+
+
+def _load_streamlit_secrets() -> None:
+    try:
+        groq_api_key = st.secrets.get("GROQ_API_KEY")
+    except Exception:
+        return
+    if groq_api_key and not os.environ.get("GROQ_API_KEY"):
+        os.environ["GROQ_API_KEY"] = str(groq_api_key).strip()
+
+
+_load_streamlit_secrets()
 
 from src.config import settings
 from src.pipeline.query_pipeline import QueryPipeline, QueryResult
