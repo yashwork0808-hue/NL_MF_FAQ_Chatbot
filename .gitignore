@@ -1,7 +1,9 @@
 .env
 .env.*
 !.env.example
-data/
+data/*
+!data/chroma/
+!data/chroma/**
 __pycache__/
 *.py[cod]
 .venv/

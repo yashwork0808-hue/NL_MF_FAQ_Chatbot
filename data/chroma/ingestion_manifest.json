@@ -1,0 +1,14 @@
+{
+  "chunk_count": 24,
+  "chunks_file": "data/chunks/chunks.jsonl",
+  "collection_name": "mf_faq",
+  "dimension": 384,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embeddings_file": "data/embeddings/embeddings.npy",
+  "generated_at": "2026-11-03T18:27:38.662639+00:00",
+  "ingestion_timestamp": "2026-11-03T18:27:38.662639+00:00",
+  "persist_dir": "data/chroma",
+  "pruned_count": 18,
+  "scraped_date": "2026-11-03",
+  "vector_db": "chroma"
+}
